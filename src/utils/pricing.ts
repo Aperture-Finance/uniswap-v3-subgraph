@@ -5,8 +5,7 @@ import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
 const WETH_ADDRESS = '0xdb1fe098232a00a8b81dd6c2a911f2486cb374ee'
-// TODO: Replace with an actual pool address involving the "stable" token '0xe81df2fc4f54d96e5f209e2d135f34e75725f34f'.
-const USDC_WETH_03_POOL = '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8'
+const USDC_WETH_03_POOL = '0xf9350644c59ed3efc9d43f50632840a5408570bc'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s

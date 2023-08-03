@@ -10,11 +10,9 @@ dataSources:
     name: Factory
     network: manta-pacific-testnet
     source:
-      # TODO: Update with deployed UniswapV3Factory address.
-      address: '0x1F98431c8aD98523631AE4a59f267346ea31F984'
+      address: '0x884402DfdEf9702dBA7fF8dDdF62AbD6afffb28b'
       abi: Factory
-      # TODO: Set this to one block before the factory contract deployment.
-      startBlock: 12369621
+      startBlock: 261467
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -41,11 +39,9 @@ dataSources:
     name: NonfungiblePositionManager
     network: manta-pacific-testnet
     source:
-      # TODO: Update with deployed UniswapV3Factory address.
-      address: '0xC36442b4a4522E871399CD717aBDD847Ab11FE88'
+      address: '0x2dc114c0DEf2BC849996756E691FC6e8339649E1'
       abi: NonfungiblePositionManager
-      # TODO: Set this to one block before NPM contract deployment.
-      startBlock: 12369651
+      startBlock: 261483
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
