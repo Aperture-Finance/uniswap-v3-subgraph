@@ -4,21 +4,15 @@ import { Bundle, Pool, Token } from './../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
-const WETH_ADDRESS = '0xdb1fe098232a00a8b81dd6c2a911f2486cb374ee'
-const USDC_WETH_03_POOL = '0x3b0684f179fef9a9df280f8e444ab7706a04624e'
+const WETH_ADDRESS = '0x0dc808adce2099a9f62aa87d9670745aba741746'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
   WETH_ADDRESS, // WETH
-  '0x39471bee1bbe79f3bfa774b6832d6a530eddac6b', // Test USDC token
-  '0x6cb54e76d7c739430a440a4b2df97fc4a784eadf' // Test USDT token
 ]
 
-let STABLE_COINS: string[] = [
-  '0x39471bee1bbe79f3bfa774b6832d6a530eddac6b', // Test USDC token
-  '0x6cb54e76d7c739430a440a4b2df97fc4a784eadf' // Test USDT token
-]
+let STABLE_COINS: string[] = []
 
 let MINIMUM_ETH_LOCKED = BigDecimal.fromString('60')
 
@@ -37,12 +31,15 @@ export function sqrtPriceX96ToTokenPrices(sqrtPriceX96: BigInt, token0: Token, t
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
+  /*
   let usdcPool = Pool.load(USDC_WETH_03_POOL) // dai is token0
   if (usdcPool !== null) {
     return usdcPool.token0Price
   } else {
     return ZERO_BD
   }
+  */
+  return ZERO_BD
 }
 
 /**

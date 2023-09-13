@@ -8,11 +8,11 @@ features:
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: manta-pacific-testnet
+    network: manta-pacific
     source:
-      address: '0x884402DfdEf9702dBA7fF8dDdF62AbD6afffb28b'
+      address: '0x5bd1F6735B80e58aAC88B8A94836854d3068a13a'
       abi: Factory
-      startBlock: 261467
+      startBlock: 41426
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -37,11 +37,11 @@ dataSources:
           handler: handlePoolCreated
   - kind: ethereum/contract
     name: NonfungiblePositionManager
-    network: manta-pacific-testnet
+    network: manta-pacific
     source:
-      address: '0x2dc114c0DEf2BC849996756E691FC6e8339649E1'
+      address: '0xe77e3F98a386a4C8f8c706A2aCfFdf57e70D06c6'
       abi: NonfungiblePositionManager
-      startBlock: 261483
+      startBlock: 41434
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -71,7 +71,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pool
-    network: manta-pacific-testnet
+    network: manta-pacific
     source:
       abi: Pool
     mapping:
