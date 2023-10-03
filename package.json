@@ -9,8 +9,8 @@
     "create-local": "graph create aperture/uniswap-v3 --node http://localhost:8020",
     "deploy-local": "graph deploy aperture/uniswap-v3 --debug --ipfs http://localhost:5001 --node http://localhost:8020",
     "watch-local": "graph deploy aperture/uniswap-v3 --watch --debug --node http://localhost:8020/ --ipfs http://localhost:5001",
-    "create-remote": "graph create aperture/uniswap-v3 --node http://manta--LoadB-wF4WURUtkhBc-70d285e02d5f9f75.elb.us-west-2.amazonaws.com:8020",
-    "deploy-remote": "graph deploy aperture/uniswap-v3 --debug --node http://manta--LoadB-wF4WURUtkhBc-70d285e02d5f9f75.elb.us-west-2.amazonaws.com:8020 --ipfs http://manta--LoadB-wF4WURUtkhBc-70d285e02d5f9f75.elb.us-west-2.amazonaws.com:5001"
+    "create-remote": "graph create aperture/uniswap-v3 --node http://manta--LoadB-GhHvBdQjQr2X-e4fa964ae140c9e9.elb.us-west-2.amazonaws.com:8020",
+    "deploy-remote": "graph deploy aperture/uniswap-v3 --debug --node http://manta--LoadB-GhHvBdQjQr2X-e4fa964ae140c9e9.elb.us-west-2.amazonaws.com:8020 --ipfs http://manta--LoadB-GhHvBdQjQr2X-e4fa964ae140c9e9.elb.us-west-2.amazonaws.com:5001"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",
