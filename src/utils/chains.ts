@@ -13,6 +13,10 @@ export enum ChainId {
   MAINNET = 1,
   MATIC = 137,
   OPTIMISM = 10,
+  ZKSYNC_ERA = 324,
+  ZORA_MAINNET = 7777777,
+  WORLDCHAIN_MAINNET = 480,
+  SEPOLIA = 11155111,
 }
 
 // subgraph does not support string enums, hence these constants
@@ -25,6 +29,10 @@ const CELO_NETWORK_NAME = 'celo'
 const MAINNET_NETWORK_NAME = 'mainnet'
 const MATIC_NETWORK_NAME = 'matic'
 const OPTIMISM_NETWORK_NAME = 'optimism'
+const ZKSYNC_ERA_NETWORK_NAME = 'zksync-era'
+const ZORA_MAINNET_NETWORK_NAME = 'zora-mainnet'
+const WORLDCHAIN_MAINNET_NETWORK_NAME = 'worldchain-mainnet'
+const SEPOLIA_NETWORK_NAME = 'sepolia'
 
 // Note: All token and pool addresses should be lowercased!
 export class SubgraphConfig {
@@ -143,7 +151,7 @@ export function getSubgraphConfig(): SubgraphConfig {
       stablecoinWrappedNativePoolAddress: '0x4c36388be6f416a29c8d8eee81c771ce6be14b18', // WETH-USDbC 0.05% pool
       stablecoinIsToken0: false,
       wrappedNativeAddress: '0x4200000000000000000000000000000000000006', // WETH
-      minimumNativeLocked: BigDecimal.fromString('1'),
+      minimumNativeLocked: BigDecimal.fromString('4'),
       stablecoinAddresses: [
         '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', // USDC
       ],
@@ -357,6 +365,96 @@ export function getSubgraphConfig(): SubgraphConfig {
         '0x1ffd370f9d01f75de2cc701956886acec9749e80',
       ],
       poolMappings: OPTIMISM_POOL_MAPPINGS,
+    }
+  } else if (selectedNetwork == ZKSYNC_ERA_NETWORK_NAME) {
+    return {
+      factoryAddress: '0x8fda5a7a8dca67bbcdd10f02fa0649a937215422',
+      stablecoinWrappedNativePoolAddress: '0x3e3dd517fec2e70eddba2a626422a4ba286e8c38', // USDC.e/WETH 0.05% pool
+      stablecoinIsToken0: true,
+      wrappedNativeAddress: '0x5aea5775959fbc2557cc8789bc1bf90a239d9a91', // WETH
+      minimumNativeLocked: BigDecimal.fromString('1'),
+      stablecoinAddresses: [
+        '0x3355df6d4c9c3035724fd0e3914de96a5a83aaf4', // USDC.e
+        '0x493257fd37edb34451f62edf8d2a0c418852ba4c', // USDT
+        '0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4', // USDC
+      ],
+      whitelistTokens: [
+        '0x5aea5775959fbc2557cc8789bc1bf90a239d9a91', // WETH
+        '0x3355df6d4c9c3035724fd0e3914de96a5a83aaf4', // USDC.e
+        '0x493257fd37edb34451f62edf8d2a0c418852ba4c', // USDT
+        '0x1d17cbcf0d6d143135ae902365d2e5e2a16538d4', // USDC
+        '0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e', // ZK
+      ],
+      tokenOverrides: [
+        {
+          address: Address.fromString('0x3355df6d4c9c3035724fd0e3914de96a5a83aaf4'),
+          symbol: 'USDC.e',
+          name: 'Bridged USDC (zkSync)',
+          decimals: BigInt.fromI32(6),
+        },
+      ],
+      poolsToSkip: [],
+      poolMappings: [],
+    }
+  } else if (selectedNetwork == ZORA_MAINNET_NETWORK_NAME) {
+    return {
+      factoryAddress: '0x7145f8aeef1f6510e92164038e1b6f8cb2c42cbb',
+      stablecoinWrappedNativePoolAddress: '0xbc59f8f3b275aa56a90d13bae7cce5e6e11a3b17', // WETH/USDzC 3% pool
+      stablecoinIsToken0: false,
+      wrappedNativeAddress: '0x4200000000000000000000000000000000000006', // WETH
+      minimumNativeLocked: BigDecimal.fromString('1'),
+      stablecoinAddresses: [
+        '0xcccccccc7021b32ebb4e8c08314bd62f7c653ec4', // USDzC
+      ],
+      whitelistTokens: [
+        '0x4200000000000000000000000000000000000006', // WETH
+        '0xcccccccc7021b32ebb4e8c08314bd62f7c653ec4', // USDzC
+      ],
+      tokenOverrides: [],
+      poolsToSkip: [],
+      poolMappings: [],
+    }
+  } else if (selectedNetwork == WORLDCHAIN_MAINNET_NETWORK_NAME) {
+    return {
+      factoryAddress: '0x7a5028bda40e7b173c278c5342087826455ea25a',
+      stablecoinWrappedNativePoolAddress: '0x5f835420502a7702de50cd0e78d8aa3608b2137e', // WETH/USDC.e 0.05% pool
+      stablecoinIsToken0: false,
+      wrappedNativeAddress: '0x4200000000000000000000000000000000000006', // WETH
+      minimumNativeLocked: BigDecimal.fromString('1'),
+      stablecoinAddresses: [
+        '0x79a02482a880bce3f13e09da970dc34db4cd24d1', // USDC.e
+      ],
+      whitelistTokens: [
+        '0x4200000000000000000000000000000000000006', // WETH
+        '0x79a02482a880bce3f13e09da970dc34db4cd24d1', // USDC.e
+        '0x03c7054bcb39f7b2e5b2c7acb37583e32d70cfa3', // WBTC
+        '0x2cfc85d8e48f8eab294be644d9e25c3030863003', // WLD
+        '0x859dbe24b90c9f2f7742083d3cf59ca41f55be5d', // sDAI
+      ],
+      tokenOverrides: [],
+      poolsToSkip: [],
+      poolMappings: [],
+    }
+  } else if (selectedNetwork == SEPOLIA_NETWORK_NAME) {
+    return {
+      factoryAddress: '0x0227628f3f023bb0b980b67d528571c95c6dac1c',
+      stablecoinWrappedNativePoolAddress: '0x6418eec70f50913ff0d756b48d32ce7c02b47c47', // USDC/WETH 1% pool
+      stablecoinIsToken0: true,
+      wrappedNativeAddress: '0xfff9976782d46cc05630d1f6ebab18b2324d6b14', // WETH
+      minimumNativeLocked: BigDecimal.fromString('1'),
+      stablecoinAddresses: [
+        '0x1c7d4b196cb0c7b01d743fbc6116a902379c7238', // USDC
+        '0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0', // USDT
+      ],
+      whitelistTokens: [
+        '0xfff9976782d46cc05630d1f6ebab18b2324d6b14', // WETH
+        '0x1c7d4b196cb0c7b01d743fbc6116a902379c7238', // USDC
+        '0xaa8e23fb1079ea71e0a56f48a2aa51851d8433d0', // USDT
+        '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984', // UNI,
+      ],
+      tokenOverrides: [],
+      poolsToSkip: [],
+      poolMappings: [],
     }
   } else {
     throw new Error('Unsupported Network')
